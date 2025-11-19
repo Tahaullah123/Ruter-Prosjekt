@@ -1,27 +1,56 @@
+from flask import Flask, render_template
 import requests
 
-base_url = "https://pokeapi.co/api/v2/"
+app = Flask(__name__)
 
-def get_pokemon_info(name):
-    url = f"{base_url}/pokemon/{name}"
-    response = requests.get(url)
-    
-    if response.status_code == 200:
-        pokemon_data = response.json()
-        return pokemon_data
-    else:
-        print(f"Failed to retrive data! {response.status_code}")
+@app.route("/")
+def index():
+    url = "https://api.entur.io/journey-planner/v3/graphql"
+    headers = {
+        "Content-Type": "application/json",
+        "ET-Client-Name": "tahaullah-journeyplanner"
+    }
 
+    query = """
+      {
+        stopPlace(id: "NSR:StopPlace:59636") {
+          name,
+          estimatedCalls(numberOfDepartures: 5) {
+            realtime,
+            aimedDepartureTime,
+            expectedDepartureTime,
+            destinationDisplay { frontText },
+            serviceJourney {
+              journeyPattern {
+                line {
+                  publicCode,
+                  name,
+                  transportMode
+                },
+              },
+            },
+          },
+        },
+      }"""
 
-pokemon_name = "charizard"
-pokemon_info = get_pokemon_info(pokemon_name)
+    response = requests.post(url, headers=headers, json={"query": query})
+    data = response.json()
 
-if pokemon_info:
-    print(f"{pokemon_info["name"]}")
-    print(f"{pokemon_info["id"]}")
-    print(f"{pokemon_info["height"]}")
-    print(f"{pokemon_info["weight"]}")
-    print(f"{pokemon_info["abilities"]}")
+    stop = data["data"]["stopPlace"]["name"]
+    departures_raw = data["data"]["stopPlace"]["estimatedCalls"]
 
+    departures = []
+    for d in departures_raw:
+        departures.append({
+            "line": d["serviceJourney"]["journeyPattern"]["line"]["publicCode"],
+            "line_name": d["serviceJourney"]["journeyPattern"]["line"]["name"],
+            "destination": d["destinationDisplay"]["frontText"],
+            "expected": d["expectedDepartureTime"],
+            "aimed": d["aimedDepartureTime"],
+            "realtime": d["realtime"]
+        })
+  
+    return render_template("index.html", stop=stop, departures=departures)
 
-
+if __name__ == "__main__":
+    app.run(debug=True)
