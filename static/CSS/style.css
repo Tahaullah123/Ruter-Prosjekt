@@ -1,0 +1,32 @@
+body{
+    background-color: #585858;
+}
+
+table {
+    margin: 0 auto;
+    width: 60%;
+    font-family: Arial;
+
+ }
+ h1{
+    text-align: center;
+    color: rgb(238, 238, 238);
+ }
+ 
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+th {
+    background: #114625;
+    color: rgb(238, 238, 238);
+}
+
+    tr:nth-child(odd) {
+      background-color: rgb(220, 220, 220); /* Light gray for odd rows */
+    }
+
+    tr:nth-child(even) {
+      background-color: #ffffff; /* White for even rows */
+    }

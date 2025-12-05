@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='CSS/style.css')}}">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Avganger – {{ stop }}</h1>
+
+<table>
+    <tr class="">
+        <th>Linje</th>
+        <th>Navn</th>
+        <th>Mot</th>
+        <th>Planlagt</th>
+        <th>Forventet</th>
+        <th>Sanntid</th>
+    </tr>
+
+    {% for d in departures %}
+    <tr>
+        <td>{{ d.line }}</td>
+        <td>{{ d.line_name }}</td>
+        <td>{{ d.destination }}</td>
+        <td>{{ d.aimed }}</td>
+        <td>{{ d.expected }}</td>
+        <td>{{ "Ja" if d.realtime else "Nei" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+</body>
+</html>

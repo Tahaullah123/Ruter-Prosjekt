@@ -1,15 +1,46 @@
-"# Ruter-Prosjekt" 
+# Entur Realtime Departures – Flask App
 
-Prosjektet henter data automatisk fra PokéAPI og lagrer resultatene lokalt i strukturerte JSON-filer.  
-Dataene blir hentet i flere lag:
-1. **Grunnleggende Pokémon-data**  
-   Hentes fra `/api/v2/pokemon/`  
-   Inneholder navn, id, typer, abilities, stats og bilder.  
-2. **Artsdata**  
-   Hentes fra `/api/v2/pokemon-species/`  
-   Inneholder flavor text, habitat, generasjon, farge og utviklingslenke.  
-3. **Evolusjonsdata**  
-   Hentes fra `evolution_chain.url`  
-   Viser hele evolusjonsrekken i strukturert rekkefølge.  
-4. **Utvidet informasjon (valgfritt)**  
-   Typer, moves, abilities og items kan hentes fra egne endepunkter.
+Denne Flask-appen henter sanntidsavganger fra Entur Journey Planner API og viser dem i en enkel webside. Den presenterer linje, destinasjon, planlagt avgang og forventet avgang på en ryddig måte.
+
+## Funksjoner
+
+* Henter sanntidsdata fra Entur sitt GraphQL-endepunkt
+* Viser de neste 15 avgangene fra et valgt holdeplass-ID
+* Formatterer avgangstidene til lettleste klokkeslett
+* Bruker en enkel HTML-template (`index.html`) som er lett å bygge videre på
+
+## Teknologier
+
+* Python
+* Flask
+* Requests
+* Entur GraphQL API
+
+
+
+Dette henter data fra holdeplass **NSR:StopPlace:59636** og sender dem til `index.html` som:
+
+* `stop`: navnet på holdeplassen
+* `departures`: liste med
+
+  * `line`
+  * `line_name`
+  * `destination`
+  * `expected` (sanntid)
+  * `aimed` (planlagt)
+  * `realtime` (bool)
+
+
+## Prosjektstruktur
+
+```
+project/
+│
+├── app.py
+└── templates/
+    └── index.html
+```
+
+## Videre utvikling
+* Automatisk oppdatering av avgangslisten
+* Bedre styling med CSS-rammeverk

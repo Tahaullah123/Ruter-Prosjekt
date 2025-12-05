@@ -1,0 +1,87 @@
+[
+    {
+        "realtime": true,
+        "aimedDepartureTime": "2025-11-19T10:51:00+01:00",
+        "expectedDepartureTime": "2025-11-19T10:51:00+01:00",
+        "destinationDisplay": {
+            "frontText": "Krummedike"
+        },
+        "serviceJourney": {
+            "journeyPattern": {
+                "line": {
+                    "publicCode": "77B",
+                    "name": "Holmlia stasjon - Asperud\u00e5sen",
+                    "transportMode": "bus"
+                }
+            }
+        }
+    },
+    {
+        "realtime": true,
+        "aimedDepartureTime": "2025-11-19T10:55:00+01:00",
+        "expectedDepartureTime": "2025-11-19T10:55:23+01:00",
+        "destinationDisplay": {
+            "frontText": "Grorud T"
+        },
+        "serviceJourney": {
+            "journeyPattern": {
+                "line": {
+                    "publicCode": "79",
+                    "name": "Grorud T - \u00c5sbr\u00e5ten",
+                    "transportMode": "bus"
+                }
+            }
+        }
+    },
+    {
+        "realtime": true,
+        "aimedDepartureTime": "2025-11-19T10:54:00+01:00",
+        "expectedDepartureTime": "2025-11-19T10:56:20+01:00",
+        "destinationDisplay": {
+            "frontText": "\u00c5sbr\u00e5ten"
+        },
+        "serviceJourney": {
+            "journeyPattern": {
+                "line": {
+                    "publicCode": "79",
+                    "name": "Grorud T - \u00c5sbr\u00e5ten",
+                    "transportMode": "bus"
+                }
+            }
+        }
+    },
+    {
+        "realtime": false,
+        "aimedDepartureTime": "2025-11-19T10:57:00+01:00",
+        "expectedDepartureTime": "2025-11-19T10:57:00+01:00",
+        "destinationDisplay": {
+            "frontText": "Bj\u00f8rndal"
+        },
+        "serviceJourney": {
+            "journeyPattern": {
+                "line": {
+                    "publicCode": "77",
+                    "name": "Holmlia stasjon - Bj\u00f8rndal",
+                    "transportMode": "bus"
+                }
+            }
+        }
+    },
+    {
+        "realtime": true,
+        "aimedDepartureTime": "2025-11-19T10:57:00+01:00",
+        "expectedDepartureTime": "2025-11-19T10:57:00+01:00",
+        "destinationDisplay": {
+            "frontText": "Krummedike"
+        },
+        "serviceJourney": {
+            "journeyPattern": {
+                "line": {
+                    "publicCode": "77B",
+                    "name": "Holmlia stasjon - Asperud\u00e5sen",
+                    "transportMode": "bus"
+                }
+            }
+        }
+    }
+]
